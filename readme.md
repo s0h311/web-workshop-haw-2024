@@ -13,3 +13,16 @@
 - Run `git --version` in order to confirm the installation.
 
 > Also on Windows make sure you have installed `Git Bash`.
+
+## Dummy Dish Endpoint
+
+> POST, GET: `https://web-workshop-haw-2024.vercel.app`
+
+```TypeScript
+type Dish = {
+  id: string,
+  name: string, // min 2 characters
+  price: number, // >= 0
+  imageUrl?: string
+}
+```
