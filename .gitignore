@@ -1,2 +1,9 @@
 node_modules
 .DS_Store
+
+dist
+.data
+.nitro
+.cache
+.output
+.env
