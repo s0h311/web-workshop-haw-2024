@@ -1,0 +1,42 @@
+body {
+  display: grid;
+  place-items: center;
+  height: 100dvh;
+  margin: 0;
+}
+
+p,
+button {
+  font-size: 30px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.counter-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.counter-text {
+  color: lightcoral;
+}
+
+.count {
+  color: steelblue;
+}
+
+.increase-button {
+  padding: 10px 15px;
+  background: none;
+  border: 2px solid steelblue;
+  border-radius: 6px;
+  color: lightcoral;
+}
+
+.increase-button:hover {
+  color: steelblue;
+  border-color: lightcoral;
+}

@@ -10,5 +10,6 @@
 ### Git
 
 - Install it from [official Git website](https://git-scm.com/downloads).
+- Run `git --version` in order to confirm the installation.
 
 > Also on Windows make sure you have installed `Git Bash`.
