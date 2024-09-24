@@ -2,7 +2,7 @@ import { Dish } from "./types";
 
 export default defineEventHandler(async (event) => {
   const rawDish: Omit<Dish, "id"> = await readValidatedBody(event, (body) =>
-    validateDish(body)
+    validateDish(JSON.parse(body))
   );
 
   const dishStorage = useStorage("dish");
@@ -16,8 +16,8 @@ export default defineEventHandler(async (event) => {
   const dishes = await dishStorage.get<Dish[]>("dishes");
 
   const dish: Dish = {
-    ...rawDish,
     id: crypto.randomUUID(),
+    ...JSON.parse(rawDish),
   };
 
   await dishStorage.set("dishes", [...dishes, dish]);
