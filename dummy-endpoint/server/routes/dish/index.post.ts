@@ -3,37 +3,13 @@ import { Dish } from "./types";
 
 export default defineEventHandler(async (event) => {
   const rawDish: Omit<Dish, "id"> = await readValidatedBody(event, (body) => {
-    console.log(JSON.parse(body));
-
     return validateDish(JSON.parse(body));
   });
 
-  await insertDish(JSON.parse(rawDish));
-  return;
-
-  const dishStorage = useStorage("dish");
-
-  const hasDishes = await dishStorage.has("dishes");
-
-  if (!hasDishes) {
-    dishStorage.set("dishes", []);
-  }
-
-  const dishes = await dishStorage.get<Dish[]>("dishes");
-
-  const dish: Dish = {
-    id: crypto.randomUUID(),
-    ...JSON.parse(rawDish),
-  };
-
-  await dishStorage.set("dishes", [...dishes, dish]);
-
-  return dish;
+  return await insertDish(JSON.parse(rawDish));
 });
 
 function validateDish(dish: any): boolean {
-  console.log(dish);
-
   return (
     dish.name !== undefined &&
     dish.name.length > 2 &&
