@@ -7,7 +7,7 @@ export default function HomePage() {
   const [dishes, setDishes] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/dish", {
+    fetch("https://web-workshop-haw-2024.vercel.app/dish", {
       method: "GET",
     })
       .then((r) => r.json())

@@ -27,7 +27,7 @@ export default function DishForm({ onDishAdd }) {
 
     setLoading(true);
 
-    fetch("http://localhost:3000/dish", {
+    fetch("https://web-workshop-haw-2024.vercel.app/dish", {
       method: "POST",
       body: JSON.stringify(dish),
     })

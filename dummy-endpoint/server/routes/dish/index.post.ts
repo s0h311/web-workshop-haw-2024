@@ -1,9 +1,15 @@
+import { insertDish } from "./service";
 import { Dish } from "./types";
 
 export default defineEventHandler(async (event) => {
-  const rawDish: Omit<Dish, "id"> = await readValidatedBody(event, (body) =>
-    validateDish(JSON.parse(body))
-  );
+  const rawDish: Omit<Dish, "id"> = await readValidatedBody(event, (body) => {
+    console.log(JSON.parse(body));
+
+    return validateDish(JSON.parse(body));
+  });
+
+  await insertDish(JSON.parse(rawDish));
+  return;
 
   const dishStorage = useStorage("dish");
 
@@ -26,6 +32,8 @@ export default defineEventHandler(async (event) => {
 });
 
 function validateDish(dish: any): boolean {
+  console.log(dish);
+
   return (
     dish.name !== undefined &&
     dish.name.length > 2 &&
